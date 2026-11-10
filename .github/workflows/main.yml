@@ -12,3 +12,11 @@ jobs:
       # Step 1: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      # Step 2: Update Index HTML
+      - name: Update HTML
+        run: |
+          # Team Leader Update index.html
+          if [ "${{ github.actor }}" = "nlimpiado" ]; then
+            sed -i '/<\/body>/i <p>Updated by Team Leader on '"$(date)"'</p>' index.html
+          fi
